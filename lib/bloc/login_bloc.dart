@@ -28,4 +28,8 @@ class LoginBloc with Validators {
     _emailController.close();
     _passwordController.close();
   }
+
+  get email => this._emailController.value;
+
+  get password => this._passwordController.value;
 }

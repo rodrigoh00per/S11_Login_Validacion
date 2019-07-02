@@ -91,7 +91,7 @@ class LoginPage extends StatelessWidget {
               inputEmail(bloc),
               inputPassword(bloc, context),
               SizedBox(height: 30.0),
-              crearBoton(bloc)
+              crearBoton(bloc, context)
             ],
           ),
         ),
@@ -146,7 +146,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget crearBoton(LoginBloc bloc) {
+  Widget crearBoton(LoginBloc bloc, BuildContext context) {
     return StreamBuilder(
         stream: bloc.formValidStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -159,7 +159,11 @@ class LoginPage extends StatelessWidget {
             ),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-            onPressed: (snapshot.hasData) ? () {} : null,
+            onPressed: (snapshot.hasData)
+                ? () {
+                    Navigator.pushReplacementNamed(context, "home");
+                  }
+                : null,
           );
         });
   }
